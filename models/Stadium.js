@@ -5,10 +5,7 @@ const stadiumSchema = new Schema(
   {
     name: { type: String, required: true },
     seats: { type: Number, required: true },
-    location: {
-      latitude: { type: Date, required: true },
-      longtitude: { type: Date, required: true },
-    },
+    location: { type: String, required: true},
     sport: { type: String, required: true },
     matches: [{ type: Schema.Types.ObjectId, ref: "Stadium" }],
   },
