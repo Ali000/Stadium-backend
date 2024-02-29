@@ -11,7 +11,7 @@ let stadiumArray = [];
 const getTeams = async () => {
   const options = {
     method: 'GET',
-    url: 'https://sportscore1.p.rapidapi.com/sports/1/teams',
+    url: 'https://sportscore1.p.rapidapi.com/sports/5/teams', // 3 basketball 4 hockey 5 volleyball
     params: {page: '1'},
     headers: {
       'X-RapidAPI-Key': '88f3eb3bc6mshba57060941c3f81p1d3c70jsn360ca0898ab0',
@@ -22,15 +22,16 @@ const getTeams = async () => {
   try {
     
     const response = await axios.request(options);
-    for(let i = 0; i < 20; i++) {
+    for(let i = 0; i < 5; i++) {
       teamsArray.push(
         {
           name: response.data.data[i].name_full,
-          sport: "Soccer"
+          sport: "Volleyball"
         }
       );
     }
     await Team.create(teamsArray);
+
   } catch (error) {
     console.error(error);
   }
@@ -54,13 +55,13 @@ const getStadiums = async () => {
     const response = await axios.request(options);
     // console.log(response.data.data);
 
-    for(let i = 0; i < 20; i++) {
+    for(let i = 26; i < 30; i++) {
       stadiumArray.push(
         {
           name: response.data.data[i].stadium.en,
           seats: response.data.data[i].stadium_capacity,
           location: response.data.data[i].city.en,
-          sport: "Soccer"
+          sport: "Basketball"
         }
       )
     }
