@@ -6,8 +6,9 @@ var logger = require("morgan")
 const cors = require("cors")
 require("./config/database")
 var indexRouter = require("./routes/index")
-var usersRouter = require("./routes/users")
-var matchesRouter = require("./routes/matches")
+const usersRouter = require("./routes/users")
+const matchesRouter = require("./routes/matches")
+const stadiumsRouter = require("./routes/stadiums")
 
 var app = express()
 
@@ -30,6 +31,7 @@ app.use(
 // app.use('/', indexRouter);
 app.use("/users", usersRouter)
 app.use("/matches", matchesRouter)
+app.use("/stadiums", stadiumsRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

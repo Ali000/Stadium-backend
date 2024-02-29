@@ -1,5 +1,4 @@
 const Match = require("../models/Match")
-// const Clown = require("../models/clown")
 
 const index = async (req, res) => {
   //done
