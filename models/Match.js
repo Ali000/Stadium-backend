@@ -1,16 +1,21 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const mongoose = require("mongoose")
+const Schema = mongoose.Schema
 
 const matchSchema = new Schema({
-  name: String,
+  name: { type: String, required: true },
   time: {
-    from: "",
-    to: "",
+    from: { type: Date, required: true },
+    to: { type: Date, required: true },
   },
-  stadium: mongoose.Schema.Types.ObjectId,
+  stadium: { type: Schema.Types.ObjectId, ref: "Stadium" },
   teams: {
-    home: mongoose.Schema.Types.ObjectId,
-    away: mongoose.Schema.Types.ObjectId
+    home: { type: Schema.Types.ObjectId, ref: "Team" },
+    away: { type: Schema.Types.ObjectId, ref: "Team" },
   },
-  result: ""
+  price: { type: Number, required: true }, //price of the ticket
+  result: { type: String },
 })
+
+// { type: String, required: true },
+
+module.exports = mongoose.model("Match", matchSchema)

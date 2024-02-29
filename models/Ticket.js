@@ -3,8 +3,8 @@ const Schema = mongoose.Schema
 
 const ticketSchema = new Schema(
   {
-    userId: { type: Schema.Types.ObjectId, ref: "User" },
-    matchId: { type: Schema.Types.ObjectId, ref: "Match" },
+    user: { type: Schema.Types.ObjectId, ref: "User" },
+    match: { type: Schema.Types.ObjectId, ref: "Match" },
     price: { type: Number, required: true },
   },
   {
@@ -12,4 +12,4 @@ const ticketSchema = new Schema(
   }
 )
 
-module.exports = mongoose.model("Team", ticketSchema)
+module.exports = mongoose.model("Ticket", ticketSchema)
