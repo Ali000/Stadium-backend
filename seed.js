@@ -70,4 +70,4 @@ const getStadiums = async () => {
   }
 }
 
-getStadiums();
+// getStadiums();
