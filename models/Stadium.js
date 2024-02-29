@@ -9,7 +9,7 @@ const stadiumSchema = new Schema({
     longtitude: Number
   },
   sport: String,
-  matchId:  [mongoose.Schema.Types.ObjectId]
+  match:  [mongoose.Schema.Types.ObjectId]
 })
 
 module.exports = stadiumSchema;

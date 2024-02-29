@@ -3,6 +3,14 @@ const Schema = mongoose.Schema;
 
 const matchSchema = new Schema({
   name: String,
-  time: String, // dont' know what this should be
-  
+  time: {
+    from: "",
+    to: "",
+  },
+  stadium: mongoose.Schema.Types.ObjectId,
+  teams: {
+    home: mongoose.Schema.Types.ObjectId,
+    away: mongoose.Schema.Types.ObjectId
+  },
+  result: ""
 })
