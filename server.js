@@ -10,7 +10,7 @@ const usersRouter = require("./routes/users")
 const matchesRouter = require("./routes/matches")
 const stadiumsRouter = require("./routes/stadiums")
 const teamsRouter = require("./routes/teams")
-const ticketsRouter = require("./routes/ticket")
+const ticketsRouter = require("./routes/tickets")
 
 var app = express()
 

@@ -13,7 +13,9 @@ const index = async (req, res) => {
 const show = async (req, res) => {
   // done
   try {
-    const ticket = await ticket.findById(req.params.id)
+    const ticket = await ticket
+      .findById(req.params.id)
+      .populate(["user", "match"])
     res.json(ticket)
   } catch (err) {
     res.json({ error: err.message })
