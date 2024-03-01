@@ -11,6 +11,7 @@ const matchesRouter = require("./routes/matches")
 const stadiumsRouter = require("./routes/stadiums")
 const teamsRouter = require("./routes/teams")
 const ticketsRouter = require("./routes/tickets")
+const AuthRouter = require("./routes/Auth");
 
 var app = express()
 
@@ -36,6 +37,7 @@ app.use("/matches", matchesRouter)
 app.use("/stadiums", stadiumsRouter)
 app.use("/teams", teamsRouter)
 app.use("/tickets", ticketsRouter)
+app.use("/auth", AuthRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
