@@ -1,10 +1,10 @@
 require("dotenv").config();
 
-import { hash, compare } from "bcrypt";
-import { sign, verfity } from "jsonwebtoke";
+const { hash, compare } = require("bcrypt");
+const { sign, verfity } = require("jsonwebtoken");
 
 const SALT_ROUNDS = parseInt(process.env.SALT_ROUNDS);
-const APP_SECRET = process.env.APP_SECRET;
+const APP_SECERT = process.env.APP_SECERT;
 
 const hashPassword = async (password) => {
     let hashedPassword = await hash(password, SALT_ROUNDS);
@@ -17,7 +17,7 @@ const comparePassword = async (storedPassword, password) => {
 }
 
 const createToken = (payload) => {
-    let token = sign(payload, APP_SECRET);
+    let token = sign(payload, APP_SECERT);
     return token;
 }
 
@@ -25,7 +25,7 @@ const verifyToken = (req, res, next) => {
     const {token} = res.locals;
 
     try {
-        let payload = verfity(token, APP_SECRET);
+        let payload = verfity(token, APP_SECERT);
         if(payload) {
             res.locals.payload = payload;
             return next();
