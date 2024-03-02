@@ -1,5 +1,6 @@
 const expressRouter = require("express");
 const AuthCTRL = require("../controllers/Auth");
+const middleware = require("../middleware");
 
 const router = expressRouter.Router();
 
