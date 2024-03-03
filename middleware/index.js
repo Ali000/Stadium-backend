@@ -2,6 +2,8 @@ require("dotenv").config()
 
 const { hash, compare } = require("bcrypt")
 const { sign, verify } = require("jsonwebtoken")
+require("dotenv").config()
+const jwt = require("jsonwebtoken")
 
 const SALT_ROUNDS = parseInt(process.env.SALT_ROUNDS)
 const APP_SECERT = process.env.APP_SECERT
@@ -25,7 +27,7 @@ const verifyToken = (req, res, next) => {
   const { token } = res.locals
 
   try {
-    let payload = verify(token, APP_SECERT)
+    let payload = jwt.verify(token, APP_SECERT)
     if (payload) {
       res.locals.payload = payload
       return next()
@@ -39,7 +41,8 @@ const verifyToken = (req, res, next) => {
 
 const stripToken = (req, res, next) => {
   try {
-    const token = req.header["authorization"].split(" ")[1]
+    const token = req.headers["authorization"].split(" ")[1]
+
     if (token) {
       res.locals.token = token
       return next()
