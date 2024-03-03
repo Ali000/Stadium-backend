@@ -1,7 +1,7 @@
 require("dotenv").config();
+const jwt = require('jsonwebtoken')
 
 const { hash, compare } = require("bcrypt");
-const { sign, verfity } = require("jsonwebtoken");
 
 const SALT_ROUNDS = parseInt(process.env.SALT_ROUNDS);
 const APP_SECERT = process.env.APP_SECERT;
@@ -25,7 +25,7 @@ const verifyToken = (req, res, next) => {
     const {token} = res.locals;
 
     try {
-        let payload = verfity(token, APP_SECERT);
+        let payload = jwt.verify(token, APP_SECERT);
         if(payload) {
             res.locals.payload = payload;
             return next();
@@ -33,13 +33,15 @@ const verifyToken = (req, res, next) => {
         res.status(401).send({ status: "Error", msg: "Unauthorized"});
     } catch (error) {
         console.log(error);
+
         res.status(401).send({status: "Error", msg: "Verify Token Error!"})
     }
 }
 
 const stripToken = (req, res, next) => {
     try {
-        const token = req.header["authorization"].split(" ")[1];
+        const token = req.headers["authorization"].split(" ")[1];
+
         if(token) {
             res.locals.token = token;
             return next();

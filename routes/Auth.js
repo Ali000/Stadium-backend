@@ -7,6 +7,6 @@ const router = expressRouter.Router();
 
 router.post('/signup', AuthCTRL.signUp);
 router.post('/signin', AuthCTRL.signIn);
-router.get("/checksession", AuthCTRL.checkSession);
+router.get("/checksession", middleware.stripToken, middleware.verifyToken, AuthCTRL.checkSession);
 
 module.exports = router;
