@@ -26,9 +26,7 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, "public")))
 
 app.use(
-  cors({
-    origin: "http://localhost:5173", // Your frontend application origin
-  })
+  cors()
 )
 
 // app.use('/', indexRouter);
