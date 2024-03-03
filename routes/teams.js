@@ -1,16 +1,42 @@
 var express = require("express")
 var router = express.Router()
 const teamsController = require("../controllers/teams")
+const middleware = require("../middleware")
 
 //send all teams
-router.get("/", teamsController.index)
+router.get(
+  "/",
+  middleware.stripToken,
+  middleware.verifyToken,
+  teamsController.index
+)
 //send a team
-router.get("/:id", teamsController.show)
+router.get(
+  "/:id",
+  middleware.stripToken,
+  middleware.verifyToken,
+  teamsController.show
+)
 // update team
-router.put("/:id", teamsController.updateTeam)
+router.put(
+  "/:id",
+  middleware.stripToken,
+  middleware.verifyToken,
+  teamsController.updateTeam
+)
 // create a team
-router.post("/", teamsController.newTeam)
+router.post(
+  "/",
+  middleware.stripToken,
+  middleware.verifyToken,
+  teamsController.newTeam
+)
 // delete a team
-router.delete("/:id", teamsController.deleteTeam)
+router.delete(
+  "/:id",
+  middleware.stripToken,
+  middleware.verifyToken,
+  teamsController.deleteTeam
+)
 
 module.exports = router
