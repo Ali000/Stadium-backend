@@ -44,8 +44,10 @@ const updateTicket = async (req, res) => {
 
 const deleteTicket = async (req, res) => {
   try {
-    await Ticket.deleteOne({ _id: req.params.id }).exec()
-    res.json(true)
+    if (res.locals.payload) {
+      await Ticket.deleteOne({ _id: req.params.id }).exec()
+      res.json(true)
+    }
   } catch (err) {
     res.json({ error: err.message })
   }
