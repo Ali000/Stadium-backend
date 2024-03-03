@@ -44,6 +44,14 @@ const updateTicket = async (req, res) => {
 
 const deleteTicket = async (req, res) => {
   try {
+    // if (res.locals.payload) {
+    //   if (
+    //     res.locals.payload.role == "Admin" ||
+    //     res.locals.payload.role == "customer"
+    //   ) {
+
+    //   }
+    // }
     await Ticket.deleteOne({ _id: req.params.id }).exec()
     res.json(true)
   } catch (err) {

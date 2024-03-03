@@ -1,5 +1,6 @@
 var express = require("express")
 var router = express.Router()
+const middleware = require("../middleware")
 
 const usersController = require("../controllers/users")
 // send user
