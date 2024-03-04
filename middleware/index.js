@@ -1,7 +1,5 @@
-require("dotenv").config()
 
 const { hash, compare } = require("bcrypt")
-const { sign, verify } = require("jsonwebtoken")
 require("dotenv").config()
 const jwt = require("jsonwebtoken")
 
