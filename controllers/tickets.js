@@ -1,4 +1,6 @@
+const Match = require("../models/Match")
 const Ticket = require("../models/Ticket")
+const User = require("../models/User")
 
 const index = async (req, res) => {
   //done
@@ -26,6 +28,11 @@ const newTicket = async (req, res) => {
   //done
   try {
     let newTicket = await Ticket.create(req.body)
+    await Match.updateOne({ _id: req.body.match }, { $inc: { seats: -1 } })
+    await User.updateOne(
+      { _id: req.body.user },
+      { $push: { tickets: newTicket._id } }
+    )
     res.json(newTicket)
   } catch (err) {
     res.json({ error: err.message })
