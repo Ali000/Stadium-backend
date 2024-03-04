@@ -14,6 +14,7 @@ const matchSchema = new Schema({
   },
   price: { type: Number, required: true }, //price of the ticket
   result: { type: String },
+  seats: { type: Number, required: true },
 })
 
 // { type: String, required: true },

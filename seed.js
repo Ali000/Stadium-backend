@@ -37,7 +37,7 @@ const getTeams = async () => {
   }
 }
 
-// getTeams();
+getTeams();
 
 const getStadiums = async () => {
 
@@ -71,4 +71,4 @@ const getStadiums = async () => {
   }
 }
 
-// getStadiums();
+getStadiums();

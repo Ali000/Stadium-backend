@@ -1,10 +1,11 @@
 const Stadium = require("../models/Stadium")
+const User = require("../models/User")
 
 const index = async (req, res) => {
   //done
   try {
     let stadiums = await Stadium.find()
-    res.json(Stadiums)
+    res.json(stadiums)
   } catch (err) {
     res.json({ error: err.message })
   }
@@ -33,7 +34,15 @@ const newStadium = async (req, res) => {
 const updateStadium = async (req, res) => {
   try {
     // req.body.status = true
-    let stadium = await Stadium.updateOne({ _id: req.params.id }, req.body)
+    const stadiumReq = req.body.stadium
+    console.log(stadiumReq)
+    let stadium = await Stadium.updateOne({ _id: req.params.id }, stadiumReq)
+    const userReq = req.body.user
+    console.log(userReq)
+    await User.updateOne(
+      { _id: userReq.id },
+      { $push: { staduims: stadium._id } }
+    )
     res.json(stadium)
   } catch (err) {
     res.json({ error: err.message })

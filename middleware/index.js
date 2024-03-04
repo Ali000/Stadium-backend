@@ -1,5 +1,4 @@
 const { hash, compare } = require("bcryptjs")
-const { sign, verify } = require("jsonwebtoken")
 require("dotenv").config()
 const jwt = require("jsonwebtoken")
 
@@ -17,7 +16,7 @@ const comparePassword = async (storedPassword, password) => {
 }
 
 const createToken = (payload) => {
-  let token = sign(payload, APP_SECERT)
+  let token = jwt.sign(payload, APP_SECERT)
   return token
 }
 

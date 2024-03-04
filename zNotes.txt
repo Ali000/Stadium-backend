@@ -1,4 +1,4 @@
 * have to go back to google Oauth page & update credintials once the app is deployed and change the authorized uri to the deployed like
 currently it is http://localhost:3000/oauth2callback, later it should look like this: https://<your app name>.herokuapp.com/oauth2callback.
 
-Middleware token verification should be added at a later stage so it does not hinder the development process.
+* Middleware token verification should be added at a later stage so it does not hinder the development process.
