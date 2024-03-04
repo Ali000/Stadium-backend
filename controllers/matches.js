@@ -1,4 +1,5 @@
 const Match = require("../models/Match")
+const Stadium = require("../models/Stadium")
 
 const index = async (req, res) => {
   //done
@@ -24,6 +25,9 @@ const newMatch = async (req, res) => {
   //done
   try {
     let newMatch = await Match.create(req.body)
+    const updateStadium = await Stadium.updateOne(req.body.stadium._id, {
+      $push: { matches: newMatch._id },
+    })
     res.json(newMatch)
   } catch (err) {
     res.json({ error: err.message })

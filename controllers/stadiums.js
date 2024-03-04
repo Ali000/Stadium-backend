@@ -1,5 +1,5 @@
-const Stadium = require('../models/Stadium')
-const User = require('../models/User')
+const Stadium = require("../models/Stadium")
+const User = require("../models/User")
 
 const index = async (req, res) => {
   //done
@@ -41,7 +41,7 @@ const updateStadium = async (req, res) => {
     console.log(userReq)
     await User.updateOne(
       { _id: userReq.id },
-      { $push: { staduims: req.params.id } }
+      { $push: { staduims: stadium._id } }
     )
     res.json(stadium)
   } catch (err) {
@@ -63,5 +63,5 @@ module.exports = {
   updateStadium,
   newStadium,
   index,
-  show
+  show,
 }
