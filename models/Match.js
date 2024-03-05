@@ -3,10 +3,9 @@ const Schema = mongoose.Schema
 
 const matchSchema = new Schema({
   name: { type: String, required: true },
-  time: {
-    from: { type: Date, required: true },
-    to: { type: Date, required: true },
-  },
+  time: { type: Date, required: true },
+  //   to: { type: Date, required: true },
+  // },
   stadium: { type: Schema.Types.ObjectId, ref: "Stadium" },
   teams: {
     home: { type: Schema.Types.ObjectId, ref: "Team" },

@@ -1,14 +1,14 @@
 const User = require("../models/User")
 
-// const index = async (req, res) => {
-//   //done
-//   try {
-//     let users = await User.find()
-//     res.json(users)
-//   } catch (err) {
-//     res.json({ error: err.message })
-//   }
-// }
+const index = async (req, res) => {
+  //done
+  try {
+    let users = await User.find()
+    res.json(users)
+  } catch (err) {
+    res.json({ error: err.message })
+  }
+}
 
 const show = async (req, res) => {
   // done
@@ -55,6 +55,6 @@ module.exports = {
   deleteUser,
   updateUser,
   newUser,
-  // index,
+  index,
   show,
 }

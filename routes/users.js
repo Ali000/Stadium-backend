@@ -3,6 +3,8 @@ var router = express.Router()
 const middleware = require("../middleware")
 
 const usersController = require("../controllers/users")
+// get all users
+router.get("/", usersController.index)
 // send user
 router.get("/:id", usersController.show)
 // update user
