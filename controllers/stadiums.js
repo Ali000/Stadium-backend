@@ -4,7 +4,7 @@ const index = async (req, res) => {
   //done
   try {
     let stadiums = await Stadium.find()
-    res.json(Stadiums)
+    res.json(stadiums)
   } catch (err) {
     res.json({ error: err.message })
   }

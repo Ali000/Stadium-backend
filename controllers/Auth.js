@@ -51,8 +51,6 @@ const signIn = async (req, res) => {
 
 const checkSession = async (req, res) => {
   const { payload } = res.locals
-  console.log(payload)
-  console.log(res.locals)
   res.send(payload)
 }
 
