@@ -14,7 +14,15 @@ const index = async (req, res) => {
 const show = async (req, res) => {
   // done
   try {
-    const match = await Match.findById(req.params.id)
+    // stadium: { type: Schema.Types.ObjectId, ref: "Stadium" },
+    // teams:
+
+    const match = await Match.findById(req.params.id).populate([
+      "stadium",
+      "teams.home",
+      "teams.away",
+    ])
+    //away
     res.json(match)
   } catch (err) {
     res.json({ error: err.message })
