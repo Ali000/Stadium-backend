@@ -17,7 +17,18 @@ const show = async (req, res) => {
       "tickets",
       "stadiums",
     ])
-    res.json(user)
+    // let aloi = user.tickets.map((ticket) => ticket.populate(["match"]))
+    const aloi = await User.findById(req.params.id)
+      .populate({
+        path: "tickets",
+        populate: {
+          path: "match",
+          model: "Match",
+        },
+      })
+      .exec()
+
+    res.json(aloi)
   } catch (err) {
     res.json({ error: err.message })
   }
