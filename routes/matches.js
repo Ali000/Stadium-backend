@@ -6,15 +6,15 @@ const middleware = require("../middleware")
 //send all Matchs
 router.get(
   "/",
-  middleware.stripToken,
-  middleware.verifyToken,
+  // middleware.stripToken,
+  // middleware.verifyToken,
   matchesController.index
 )
 //send a Match
 router.get(
   "/:id",
-  middleware.stripToken,
-  middleware.verifyToken,
+  // middleware.stripToken,
+  // middleware.verifyToken,
   matchesController.show
 )
 // update Match
