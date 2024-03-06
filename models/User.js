@@ -8,7 +8,7 @@ const userSchema = new Schema(
     email: { type: String, required: true },
     role: { type: String, required: true },
     tickets: [{ type: Schema.Types.ObjectId, ref: "Ticket" }],
-    staduims: [{ type: Schema.Types.ObjectId, ref: "Stadium" }],
+    stadiums: [{ type: Schema.Types.ObjectId, ref: "Stadium" }],
   },
   {
     timestamps: true,

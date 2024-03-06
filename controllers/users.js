@@ -15,7 +15,7 @@ const show = async (req, res) => {
   try {
     const user = await User.findById(req.params.id).populate([
       "tickets",
-      "staduims",
+      "stadiums",
     ])
     res.json(user)
   } catch (err) {
