@@ -35,14 +35,15 @@ const updateStadium = async (req, res) => {
   try {
     // req.body.status = true
     const stadiumReq = req.body.stadium
-    console.log(stadiumReq)
+
     let stadium = await Stadium.updateOne({ _id: req.params.id }, stadiumReq)
+
     const userReq = req.body.user
-    console.log(userReq)
-    await User.updateOne(
+    const r = await User.updateOne(
       { _id: userReq.id },
-      { $push: { staduims: stadium._id } }
+      { $push: { stadiums: req.params.id } }
     )
+
     res.json(stadium)
   } catch (err) {
     res.json({ error: err.message })
