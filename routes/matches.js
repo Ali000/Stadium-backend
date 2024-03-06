@@ -6,8 +6,8 @@ const middleware = require("../middleware")
 //send all Matchs
 router.get(
   "/",
-  middleware.stripToken,
-  middleware.verifyToken,
+  // middleware.stripToken,
+  // middleware.verifyToken,
   matchesController.index
 )
 //send a Match
