@@ -13,10 +13,10 @@ const index = async (req, res) => {
 const show = async (req, res) => {
   // done
   try {
-    const user = await User.findById(req.params.id).populate([
-      "tickets",
-      "stadiums",
-    ])
+    // const user = await User.findById(req.params.id).populate([
+    //   "tickets",
+    //   "stadiums",
+    // ])
     // let aloi = user.tickets.map((ticket) => ticket.populate(["match"]))
     const aloi = await User.findById(req.params.id)
       .populate({
@@ -26,6 +26,7 @@ const show = async (req, res) => {
           model: "Match",
         },
       })
+      .populate("stadiums")
       .exec()
 
     res.json(aloi)
