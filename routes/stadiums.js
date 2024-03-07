@@ -1,4 +1,4 @@
-var express = require('express')
+var express = require("express")
 var router = express.Router()
 const stadiumController = require("../controllers/stadiums")
 const middleware = require("../middleware")
@@ -23,6 +23,13 @@ router.put(
   middleware.stripToken,
   middleware.verifyToken,
   stadiumController.updateStadium
+)
+//booking
+router.put(
+  "/booking/:id",
+  middleware.stripToken,
+  middleware.verifyToken,
+  stadiumController.bookingStadium
 )
 // create a stadium
 router.post(
