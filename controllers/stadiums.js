@@ -35,14 +35,18 @@ const updateStadium = async (req, res) => {
   try {
     // req.body.status = true
     const stadiumReq = req.body.stadium
+    console.log(req.body)
+    let change = req.body
+    console.log(req.params.id)
+    let newId = req.params.id
+    // let stadium = await Stadium.updateOne({ _id: req.params.id }, stadiumReq)
+    let stadium = await Stadium.findOneAndUpdate({ _id: newId }, change)
 
-    let stadium = await Stadium.updateOne({ _id: req.params.id }, stadiumReq)
-
-    const userReq = req.body.user
-    const r = await User.updateOne(
-      { _id: userReq.id },
-      { $push: { stadiums: req.params.id } }
-    )
+    // const userReq = req.body.user
+    // const r = await User.updateOne(
+    //   { _id: userReq.id },
+    //   { $push: { stadiums: req.params.id } }
+    // )
 
     res.json(stadium)
   } catch (err) {
